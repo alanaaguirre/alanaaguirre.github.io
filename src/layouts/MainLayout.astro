@@ -1,0 +1,46 @@
+---
+import MainHead from '@/components/MainHead.astro';
+import Navbar from '@/components/Navbar.astro';
+interface Props {
+  title: string;
+}
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <MainHead {title} />
+  </head>
+
+  <!-- Google tag (gtag.js) -->
+    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-B1B1DRR0RL"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-B1B1DRR0RL');
+    </script> -->
+
+    <body id="page-top" class="page">
+      <main data-scroll-container>
+        <!-- Cursor effect -->
+        <div id="preloader" class="preloader">
+          <div class="cursor"></div>
+        </div>
+        <!-- Navbar -->
+        <Navbar />
+        <!-- Main Content with scroll container -->
+        <div class="container-fluid p-0">
+          <slot /> 
+        </div>
+            <!-- GSAP, ScrollTrigger, Locomotive Scroll -->
+            <script is:inline src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+            <script is:inline src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+            <script is:inline src="https://unpkg.com/split-type"></script>
+            <script is:inline src="https://unpkg.com/locomotive-scroll/dist/locomotive-scroll.min.js"></script>
+            <script src="/src/js/scripts.js" defer></script>
+      </main>
+    </body>
+</html>
