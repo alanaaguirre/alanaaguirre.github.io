@@ -4,7 +4,7 @@ subTitle: "Visual"
 typeProject: "Landing Page"
 
 thumb: "/assets/img/projects/thumbs/ofitel00.webp"
-
+heroImage: "/assets/img/projects/1679935396ofitel_screen.webp"
 imgOne: "/assets/img/projects/1679935396ofitel_screen.webp"
 
 imgTwo: "/assets/img/projects/1679935396ofitel.webp"

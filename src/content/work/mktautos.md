@@ -2,23 +2,19 @@
 title: 'MKT'
 subTitle: 'Autos'
 typeProject: 'Desarrollo Web'
-thumb: "/assets/img/projects/thumbs/linercapital00.webp"
+thumb: "/assets/img/projects/thumbs/1679687803mktautos_screen01.webp"
 
-heroImage: "/assets/img/projects/1679686480linercapital_screen.webp"
+heroImage: "/assets/img/projects/1679687803mktautos_screen01.webp"
 
-imgOne: "/assets/img/projects/1679686480linercapital01.webp"
+imgOne: "/assets/img/projects/1679687803mkaautos01.webp"
 
-imgTwo: "/assets/img/projects/1679686480linercapital02.webp"
+imgTwo: "/assets/img/projects/1679687803mktautos02.webp"
 
-tags: ["UI", "Landing Page", "Laravel", "GSAP"]
-
-pubDate: "2019-11-28"
+tags: ["UI", "Landing Page", GSAP]
+pubDate: "2019-11-04"
 ---
 
-**Liner Capital** es un sitio web corporativo diseñado para una firma especializada en asesorías y servicios financieros. Su estructura combina diseño visual sobrio y profesional, enfocándose en transmitir confianza y claridad.
 
-  
 
-El proyecto contempló principalmente en del desarrollo Front-end de un diseño responsivo que destacara servicios clave y facilite la navegación mediante una interfaz limpia. Se optimizó la experiencia del usuario con un flujo sencillo hacia secciones como “Equipo” y “Contacto”.
+**MKTAutos** es una agencia de marketing enfocada en la industria automotriz, ofreciendo una gama de servicios como marketing tradicional y digital, branding, diseño, producción audiovisual y desarrollo web. El diseño es visualmente atractivo, con énfasis en la claridad de la navegación, mostrando ejemplos de su trabajo. La estrategia de presentación resalta su especialización en este sector, transmitiendo profesionalismo y confianza.
 
-El resultado es una plataforma centrada en accesibilidad y conversión, reforzando la imagen de confianza y excelencia de la marca.

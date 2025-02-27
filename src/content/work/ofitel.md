@@ -4,7 +4,7 @@ subTitle: ""
 typeProject: "Landing Page"
 
 thumb: "/assets/img/projects/thumbs/contactovisual00.webp"
-
+heroImage: "/assets/img/projects/1679936402contactovisual_screen.webp"
 imgOne: "/assets/img/projects/1679936402contactovisual_screen.webp"
 
 imgTwo: "/assets/img/projects/1679936402contactovisual.webp"

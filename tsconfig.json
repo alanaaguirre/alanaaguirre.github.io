@@ -6,6 +6,14 @@
       "@/*":[
         "src/*"
       ]
-    }
+    },
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "strict": true,  // Esta opción garantiza que todos los tipos sean estrictos
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "jsx": "react"
   }
 }

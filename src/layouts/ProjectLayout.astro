@@ -2,9 +2,9 @@
 import { type CollectionEntry } from "astro:content";
 import MainLayout from "@/layouts/MainLayout.astro";
 import MainHero from "@/components/MainHero.astro";
-const {thumb, heroImage, title, subTitle, tags, imgOne, imgTwo} = Astro.props;
+const {heroImage, title, subTitle, tags, imgOne, imgTwo} = Astro.props;
 type Props = CollectionEntry <"work">["data"];
-const { prevProject, nextProject, Content, ...props } = Astro.props;
+
 ---
 
 <MainLayout title={title}>
