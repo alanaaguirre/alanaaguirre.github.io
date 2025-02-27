@@ -1,6 +1,6 @@
 ---
 title: 'VentasAutos'
-subtitle: 'MX'
+subTitle: 'MX'
 typeProject: 'Desarrollo Web'
 thumb: "/assets/img/projects/thumbs/vamx00.webp"
 
