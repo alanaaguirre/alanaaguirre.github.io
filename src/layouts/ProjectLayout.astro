@@ -19,9 +19,9 @@ type Props = CollectionEntry <"work">["data"];
                         <slot />
                     </p>
                     <div class="grid gap-3" data-scroll>
-                        {tags.map((tag: string) => (
+                        {tags ? tags.map((tag: string) => (
                             <span class="badge text-bg-light me-2">{tag}</span>
-                           ))}
+                          )) : <p>No tags available</p>}
                       </div>
                 </div>
 
@@ -35,9 +35,9 @@ type Props = CollectionEntry <"work">["data"];
                         <slot />
                     </p>
                     <div class="grid gap-3" data-scroll>
-                        {tags.map((tag: string) => (
+                        {tags ? tags.map((tag: string) => (
                             <span class="badge text-bg-light me-2">{tag}</span>
-                           ))}
+                          )) : <p>No tags available</p>}
                       </div>
                 </div>
             </div>

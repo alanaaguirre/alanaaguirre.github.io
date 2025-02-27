@@ -1,15 +1,10 @@
 ---
-import { getCollection } from "astro:content";
-const projects = (await getCollection("work"))
-  .map((project) => ({
-    ...project,
-    data: {
-      ...project.data,
-      pubDate: new Date(project.data.pubDate), // Convierte pubDate a Date
-    },
-  }))
-  .sort((a, b) => b.data.pubDate - a.data.pubDate); // Ordena por fecha más reciente
-import Project from "@/components/Project.astro";
+import { getCollection } from 'astro:content';
+import Project from '@/components/Project.astro';
+
+const projects = (await getCollection('work')).sort(
+  (a, b) => (b.data.pubDate?.getTime() || 0) - (a.data.pubDate?.getTime() || 0)
+);
 ---
 
 
