@@ -10952,8 +10952,10 @@ p.lead {
 }
 
 #sideNav {
+  background-color: var(--bg-body);
   padding-left: 1rem;
   padding-right: 1rem;
+  z-index: 10000;
 }
 #sideNav .navbar-nav .nav-item .nav-link {
   font-weight: 800;
@@ -11415,9 +11417,12 @@ section.resume-section .resume-section-content {
     font-size: calc(1rem + 6vw);
   }
   .menu__item {
-    padding-left: 0rem;
+    padding-left: 2rem;
   }
   .descriptionProject{
     margin-bottom: 10vh;
   }
+  .menu__item::before {
+    padding-left: .3rem;
+}
 }
