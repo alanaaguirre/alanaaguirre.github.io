@@ -29,7 +29,10 @@ html, body {
   height: 100%;
   overflow: hidden;
 }
-html *{
+html * {
+  cursor:none;
+}
+html, body {
   cursor:none;
 }
 
@@ -129,21 +132,6 @@ p {
   min-height: 100vh;
 }
 
-/* Cursor en la pantalla */
-/* Estilo para el contenedor del cursor */
-.cursor {
-  position: fixed;
-  top: 0;
-  left: 0;
-  pointer-events: none;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background-color: transparent; /* Fondo del contenedor */
-  transform: translate(-50%, -50%);
-  z-index: 9999; /* Asegurarse de que esté por encima de otros elementos */
-}
-
 /* Estilo base para el cursor */
 .cursor {
   position: fixed;
@@ -158,8 +146,11 @@ p {
   z-index: 9999;
   transition: transform 0.15s ease; /* Transición más suave */
   mix-blend-mode: difference;
+  cursor: none;
 }
-
+.glitch-active:hover {
+  cursor: none;
+}
 /* Efecto de neón activo solo al hacer hover sobre un elemento interactivo */
 .cursor.glitch-active {
   animation: neon-glitch 1s infinite alternate;
@@ -170,14 +161,17 @@ p {
   0% {
     box-shadow: 0 0 15px #007c82, 0 0 30px #007c82;
     background-color: #007c82;
+    border: none;
   }
   50% {
     box-shadow: 0 0 30px #ff00ff, 0 0 60px #ff00ff;
     background-color: #ff00ff;
+    border: none;
   }
   100% {
     box-shadow: 0 0 15px #00ffff, 0 0 30px #00ffff;
     background-color: #00ffff;
+    border: none;
   }
 }
 
