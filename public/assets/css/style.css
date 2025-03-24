@@ -11483,10 +11483,13 @@ section.resume-section .resume-section-content {
     flex-wrap: inherit;
   }
   .glitch-container {
-    height: 220px;
+    height: 150px;
+  }
+  .glitch-top, .glitch-middle, .glitch-bottom{
+    font-size: 7em;
   }
   .glitch-icon {
-    font-size: 13em;
+    font-size: 7em;
     color: white;
     position: absolute;
   }
