@@ -215,6 +215,27 @@ document.querySelectorAll(".copy-link").forEach(link => {
       });
   });
 });
+document.querySelectorAll(".copy-linkF").forEach(link => {
+  link.addEventListener("click", (e) => {
+      e.preventDefault(); // Evita que el enlace se abra
+
+      const url = link.getAttribute("data-link");
+
+      // Copiar al portapapeles
+      navigator.clipboard.writeText(url).then(() => {
+          console.log("Enlace copiado:", url);
+
+          // Mostrar el Toast de Bootstrap
+          const toastEl = document.getElementById("copyToastF");
+          const toast = new bootstrap.Toast(toastEl);
+          toast.show();
+      }).catch(err => {
+          console.error("Error al copiar:", err);
+      });
+  });
+});
+
+
 
 
 function setCopyrightDate() {
