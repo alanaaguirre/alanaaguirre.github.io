@@ -37,25 +37,44 @@ gsap.registerPlugin(ScrollTrigger);
 gsap.to(".text p", { backgroundPositionX: "0%", stagger: 1, scrollTrigger: { scroller: "[data-scroll-container]", trigger: ".text p", scrub: 1, start: "top center", end: "bottom top" } });
 gsap.to(".title1", { x: -4000, xPercent: 150, ease: "none", scrollTrigger: { scroller: "[data-scroll-container]", trigger: ".title1", scrub: true } });
 gsap.to(".title2", { x: 100, xPercent: 150, ease: "none", scrollTrigger: { scroller: "[data-scroll-container]", trigger: ".title2", scrub: true } });
-gsap.set(".cursor", { xPercent: -50, yPercent: -50 });
+
+
+/// Seleccionar el contenedor del cursor y los elementos interactivos
 const cursor = document.querySelector(".cursor");
+const cursorInner = document.querySelector(".cursor-inner");
+const interactiveElements = document.querySelectorAll("a, button");
+
+// Activar el efecto glitch cuando el mouse entra sobre un elemento interactivo
+interactiveElements.forEach((element) => {
+  element.addEventListener("mouseenter", () => {
+    cursor.classList.add("glitch-active"); // Activa el glitch en el cursor
+  });
+  element.addEventListener("mouseleave", () => {
+    cursor.classList.remove("glitch-active"); // Desactiva el glitch en el cursor
+  });
+});
+
+// Movimiento fluido del cursor con GSAP
+gsap.set(".cursor", { xPercent: -50, yPercent: -50 });
 const pos = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
 const mouse = { x: pos.x, y: pos.y };
 const speed = 0.2;
 const xSet = gsap.quickSetter(cursor, "x", "px");
 const ySet = gsap.quickSetter(cursor, "y", "px");
+
 window.addEventListener("mousemove", (e) => {
-    mouse.x = e.x;
-    mouse.y = e.y;
+  mouse.x = e.x;
+  mouse.y = e.y;
 });
+
 gsap.ticker.add(() => {
-    const dt = 1.0 - Math.pow(1.0 - speed, gsap.ticker.deltaRatio());
-    pos.x += (mouse.x - pos.x) * dt;
-    pos.y += (mouse.y - pos.y) * dt;
-    xSet(pos.x);
-    ySet(pos.y);
+  const dt = 1.0 - Math.pow(1.0 - speed, gsap.ticker.deltaRatio());
+  pos.x += (mouse.x - pos.x) * dt;
+  pos.y += (mouse.y - pos.y) * dt;
+  xSet(pos.x);
+  ySet(pos.y);
 });
-// Detectar el ancho de la ventana
+
 // Detectar el ancho de la ventana
 if (window.innerWidth <= 768) { 
   // Para dispositivos móviles
@@ -121,7 +140,7 @@ function glitchEffectFigma() {
 
 function glitchEffectDesign() {
   let selector = ".design-icon";
-  let iconA = ["fa-sharp", "fa-solid", "fa-fa-bezier-curve"];
+  let iconA = ["fa-sharp", "fa-solid", "fa-bezier-curve"];
   let iconB = ["fa-sharp", "fa-solid", "fa-icons"];
 
   applyGlitchEffect(selector, iconA, iconB);

@@ -14,7 +14,7 @@ type Props = CollectionEntry <"work">["data"];
     <section class="projects" data-scroll-section>
         <div class="container-fluid">
             <div class="row">
-                <div class="col-lg-4 descriptionProject d-none d-xxl-block d-xl-block d-lg-block" data-scroll>
+                <div class="col-xl-4 col-lg-12 col-md-12 descriptionProject mb-4" data-scroll>
                     <p class="prose">
                         <slot />
                     </p>
@@ -24,34 +24,12 @@ type Props = CollectionEntry <"work">["data"];
                           )) : <p>No tags available</p>}
                       </div>
                 </div>
-
-                  <div class="col-lg-8 col-md-12 col-sm-12 imagesProject">
+                  <div class="col-xl-8 col-lg-12 col-md-12 col-sm-12 imagesProject">
                     {heroImage && heroImage !== "" && <img class="img-fluid w-100 rounded my-4 image" src={heroImage} alt={title} />}
                     {imgOne && imgOne !== "" && <img class="img-fluid w-100 rounded my-4 image" src={imgOne} alt={title} />}
                     {imgTwo && imgTwo !== "" && <img class="img-fluid w-100 rounded my-4 image" src={imgTwo} alt={title} />}
                   </div>
-                <div class="col-lg-4 col-md-12 col-sm-12 mt-4 descriptionProject d-block d-sm-none" data-scroll>
-                    <p class="prose">
-                        <slot />
-                    </p>
-                    <div class="grid gap-3" data-scroll>
-                        {tags ? tags.map((tag: string) => (
-                            <span class="badge text-bg-light me-2">{tag}</span>
-                          )) : <p>No tags available</p>}
-                      </div>
-                </div>
             </div>
         </div>
     </section>
-
-    <section>
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-12">
-                    
-                </div>
-            </div>
-        </div>
-    </section>
-
 </MainLayout>
