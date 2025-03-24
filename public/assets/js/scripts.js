@@ -196,6 +196,26 @@ function applyGlitchEffect(selector, iconA, iconB) {
 }
 
 
+document.querySelectorAll(".copy-link").forEach(link => {
+  link.addEventListener("click", (e) => {
+      e.preventDefault(); // Evita que el enlace se abra
+
+      const url = link.getAttribute("data-link");
+
+      // Copiar al portapapeles
+      navigator.clipboard.writeText(url).then(() => {
+          console.log("Enlace copiado:", url);
+
+          // Mostrar el Toast de Bootstrap
+          const toastEl = document.getElementById("copyToast");
+          const toast = new bootstrap.Toast(toastEl);
+          toast.show();
+      }).catch(err => {
+          console.error("Error al copiar:", err);
+      });
+  });
+});
+
 
 function setCopyrightDate() {
     year = new Date().getYear();

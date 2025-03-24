@@ -29,6 +29,12 @@ html, body {
   height: 100%;
   overflow: hidden;
 }
+html * {
+  cursor:none;
+}
+html, body {
+  cursor:none;
+}
 
 #container {
   position: relative;
@@ -42,9 +48,6 @@ html.has-scroll-smooth {
   right: 0;
   top: 0;
   bottom: 0;
-}
-html * {
-  cursor: none;
 }
 body {
   margin: 0;
@@ -128,17 +131,50 @@ p {
 .sctn {
   min-height: 100vh;
 }
+
+/* Estilo base para el cursor */
 .cursor {
-  width: 50px;
-  height: 50px;
   position: fixed;
   top: 0;
   left: 0;
-  border: 4px solid #00adb5;
-  border-radius: 50%;
   pointer-events: none;
-  z-index: 10000;
+  width: 40px; /* Cursor más grande */
+  height: 40px; /* Cursor más grande */
+  border-radius: 50%;
+  border: #007c82 4px solid;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  transition: transform 0.15s ease; /* Transición más suave */
+  mix-blend-mode: difference;
+  cursor: none;
 }
+.glitch-active:hover {
+  cursor: none;
+}
+/* Efecto de neón activo solo al hacer hover sobre un elemento interactivo */
+.cursor.glitch-active {
+  animation: neon-glitch 1s infinite alternate;
+}
+
+/* Animación de neón */
+@keyframes neon-glitch {
+  0% {
+    box-shadow: 0 0 15px #007c82, 0 0 30px #007c82;
+    background-color: #007c82;
+    border: none;
+  }
+  50% {
+    box-shadow: 0 0 30px #ff00ff, 0 0 60px #ff00ff;
+    background-color: #ff00ff;
+    border: none;
+  }
+  100% {
+    box-shadow: 0 0 15px #00ffff, 0 0 30px #00ffff;
+    background-color: #00ffff;
+    border: none;
+  }
+}
+
 .year {
   transform: rotate(270deg);
   font-weight: 700;
@@ -11383,7 +11419,51 @@ section.resume-section .resume-section-content {
   clip-path: inset(70% 0 0 0);
 }
 
+@media (min-width: 769px) and (max-width: 1024px) {
+  ol, ul {
+    padding-left: 0rem;
+}
+  header h1 {
+    font-weight: 700 !important;
+    font-size: calc(1.625rem + 9vw);
+    padding-right: 15px;
+    text-wrap: balance;
+  }
+  .content .text {
+    font-size: 40px;
+    line-height: auto;
+}
+.service__content{
+  text-align: center;
+}
+  .glitch-container {
+    position: relative;
+    width: 800px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .glitch-top, .glitch-middle, .glitch-bottom{
+    font-size: 10em;
+  }
+  .glitch-icon {
+    font-size: 10em;
+    color: white;
+    position: absolute;
+  }
+  .menu__item-text {
+    overflow: visible;
+}
+  .menu__item {
+      padding-left: 5vw;
+      justify-content: initial;
+  }
+  .menu__item-sub {
+    margin-left: 1rem;
+}
 
+}
 
 @media (min-width: 375px) and (max-width: 768px) {
   /* Estilos específicos para pantallas entre 375px y 768px */
