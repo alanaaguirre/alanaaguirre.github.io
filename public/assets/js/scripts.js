@@ -104,98 +104,79 @@ if (window.innerWidth <= 768) {
   });
 };
 
-document.addEventListener("DOMContentLoaded", () => {
-  gsap.registerPlugin();
-
-  const tl = gsap.timeline({ repeat: -1 }); // Loop infinito
-
-  tl.fromTo(".figma",
-    { opacity: 0, x: 100 }, // Aparece y se mueve
-    { opacity: 1, x: 0, duration: 1, ease: "power3.out" }
-  )
-  .to(".figma", { opacity: 0, duration: 0.5, ease: "power3.out" }) // Desaparece
-  .fromTo(".codigo",
-    { opacity: 0 },
-    { opacity: 1, duration: 1.5, ease: "power3.out" }
-  )
-  .to(".codigo", { opacity: 0, duration: 1, ease: "power3.out" }); // Desaparece
-
-  
-});
 
 document.addEventListener("DOMContentLoaded", () => {
-  gsap.registerPlugin();
-
-  const iconos = document.querySelectorAll(".iconos i");
-
-  iconos.forEach((icono, index) => {
-    const duracionSubida = gsap.utils.random(1, 2.5);
-    const duracionBajada = gsap.utils.random(1.5, 2.5);
-    const delayVisible = gsap.utils.random(2, 4);
-    const easing = gsap.utils.random(["power2.out", "power3.out", "power4.out"]);
-
-    // Asignación de posiciones y tamaños aleatorios
-    const posX = gsap.utils.random(10, 90);
-    const posY = gsap.utils.random(10, 90);
-    const size = gsap.utils.random(30, 70);
-
-    gsap.set(icono, {
-      left: `${posX}%`,
-      top: `${posY}%`,
-      fontSize: `${size}px`,
-    });
-
-    // Asignación de color secuencial
-    const colorSecuencia = index % 2 === 0 ? "#007c82" : "#fff"; // Alternar colores
-
-    gsap.timeline({ repeat: -1 })
-      .fromTo(icono, 
-        { y: 100, opacity: 0, color: colorSecuencia },  
-        { y: 0, opacity: 1, duration: duracionSubida, ease: easing, color: "#fff" }
-      )
-      .to(icono, { 
-        y: 0, opacity: 1, duration: delayVisible, color: colorSecuencia
-      })
-      .to(icono, { 
-        y: -100, opacity: 0, duration: duracionBajada, ease: easing, color: "#007c82"
-      });
-  });
+  glitchEffectFigma();
+  glitchEffectDesign();
+  glitchEffectDev();
 });
 
-// Función para alternar entre Desktop y Smartphone
-function glitchEffect() {
-  let tl = gsap.timeline({ repeat: -1, repeatDelay: 1.5 });
+function glitchEffectFigma() {
+  let selector = ".figma-icon";
+  let iconA = ["fa-brands", "fa-figma"];
+  let iconB = ["fa-sharp", "fa-solid", "fa-code"];
 
-  // 1️⃣ Glitch horizontal (corte y desplazamiento de capas)
-  tl.to(".glitch-top", { x: -15, opacity: 1, duration: 0.025, yoyo: true, repeat: 2 }, "glitch")
-  .to(".glitch-middle", { x: 15, opacity: 1, duration: 0.025, yoyo: true, repeat: 2 }, "glitch")
-  .to(".glitch-bottom", { x: -20, opacity: 1, duration: 0.025, yoyo: true, repeat: 2 }, "glitch")
-    .to(".glitch-top, .glitch-middle, .glitch-bottom", { opacity: 0, duration: 0.05 });
-
-  // 2️⃣ RGB Shift (Efecto de color)
-  tl.to(".glitch-icon", { 
-      filter: "drop-shadow(5px 0px red) drop-shadow(-5px 0px blue)", 
-      duration: 0.1 
-  }, "-=0.1")
-  .to(".glitch-icon", { filter: "none", duration: 0.1 });
-
-  // 3️⃣ Líneas de interferencia
-  tl.to(".stripe", { opacity: 1, x: 5, duration: 0.02, stagger: 0.01 }, "glitch")
-    .to(".stripe", { x: -5, duration: 0.02, stagger: 0.01 }, "glitch")
-    .to(".stripe", { opacity: 0, duration: 0.02, stagger: 0.01 }, "+=0.05");
-
-  // 4️⃣ Cambio de icono Desktop → Smartphone
-  tl.to(".glitch-icon", { opacity: 0, duration: 0.1 })
-    .call(() => {
-        document.querySelectorAll(".glitch-icon, .glitch-top, .glitch-middle, .glitch-bottom").forEach(icon => {
-            icon.classList.toggle("fa-desktop");
-            icon.classList.toggle("fa-mobile-alt");
-        });
-    })
-    .to(".glitch-icon", { opacity: 1, duration: 0.1 });
+  applyGlitchEffect(selector, iconA, iconB);
 }
 
-glitchEffect();
+function glitchEffectDesign() {
+  let selector = ".design-icon";
+  let iconA = ["fa-sharp", "fa-solid", "fa-fa-bezier-curve"];
+  let iconB = ["fa-sharp", "fa-solid", "fa-icons"];
+
+  applyGlitchEffect(selector, iconA, iconB);
+}
+
+function glitchEffectDev() {
+  let selector = ".dev-icon";
+  let iconA = ["fa-sharp", "fa-solid", "fa-terminal"];
+  let iconB = ["fa-sharp", "fa-solid", "fa-laptop-code"];
+
+  applyGlitchEffect(selector, iconA, iconB);
+}
+
+// 📌 Función genérica para glitch y cambio de icono
+function applyGlitchEffect(selector, iconA, iconB) {
+  let iconElement = document.querySelector(selector);
+  if (!iconElement) {
+      console.error(`Elemento con selector "${selector}" no encontrado.`);
+      return;
+  }
+
+  let tl = gsap.timeline({ repeat: -1, repeatDelay: 1.5 });
+
+  // Glitch en clones
+  tl.to(`${selector} ~ .glitch-top`, { x: -5, opacity: 1, duration: 0.05, yoyo: true, repeat: 2 }, "glitch")
+    .to(`${selector} ~ .glitch-middle`, { x: 5, opacity: 1, duration: 0.05, yoyo: true, repeat: 2 }, "glitch")
+    .to(`${selector} ~ .glitch-bottom`, { x: -3, opacity: 1, duration: 0.05, yoyo: true, repeat: 2 }, "glitch")
+    .to(`${selector} ~ .glitch-top, ${selector} ~ .glitch-middle, ${selector} ~ .glitch-bottom`, { opacity: 0, duration: 0.1 });
+
+  // Efecto RGB Shift
+  tl.to(selector, { filter: "drop-shadow(4px 0px red) drop-shadow(-4px 0px blue)", duration: 0.1 }, "-=0.1")
+    .to(selector, { filter: "none", duration: 0.1 });
+
+  // Cambio de icono con `classList.contains()`
+  tl.to(selector, { opacity: 0, duration: 0.1 })
+    .call(() => {
+        let icon = document.querySelector(selector);
+        if (icon) {
+            let isIconA = icon.classList.contains(iconA[iconA.length - 1]); // Detectamos con la última clase
+            
+            if (isIconA) {
+                iconA.forEach(cls => icon.classList.remove(cls)); // Quitar icono A
+                iconB.forEach(cls => icon.classList.add(cls)); // Agregar icono B
+            } else {
+                iconB.forEach(cls => icon.classList.remove(cls)); // Quitar icono B
+                iconA.forEach(cls => icon.classList.add(cls)); // Agregar icono A
+            }
+        } else {
+            console.error(`No se encontró el icono con selector "${selector}" al cambiar de icono.`);
+        }
+    })
+    .to(selector, { opacity: 1, duration: 0.1 });
+}
+
+
 
 function setCopyrightDate() {
     year = new Date().getYear();

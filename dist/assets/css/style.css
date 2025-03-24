@@ -10978,7 +10978,7 @@ p.lead {
     flex-direction: column;
     width: 10rem;
     height: 100vh;
-    z-index: 10000;
+    z-index: 999;
   }
   #sideNav .navbar-brand {
     display: flex;

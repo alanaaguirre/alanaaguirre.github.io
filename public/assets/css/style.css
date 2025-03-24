@@ -11383,7 +11383,33 @@ section.resume-section .resume-section-content {
   clip-path: inset(70% 0 0 0);
 }
 
-
+@media (min-width: 769px) and (max-width: 1024px) {
+  header h1 {
+    font-weight: 700 !important;
+    font-size: calc(1.625rem + 10vw);
+    padding-right: 15px;
+  }
+  .content .text {
+    font-size: 40px;
+    line-height: auto;
+}
+  .glitch-container {
+    position: relative;
+    width: 800px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .glitch-top, .glitch-middle, .glitch-bottom{
+    font-size: 10em;
+  }
+  .glitch-icon {
+    font-size: 10em;
+    color: white;
+    position: absolute;
+  }
+}
 
 @media (min-width: 375px) and (max-width: 768px) {
   /* Estilos específicos para pantallas entre 375px y 768px */
