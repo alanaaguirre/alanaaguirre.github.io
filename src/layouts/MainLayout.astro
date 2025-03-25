@@ -2,6 +2,7 @@
 import MainHead from '@/components/MainHead.astro';
 import Navbar from '@/components/Navbar.astro';
 import Footer from '@/components/Footer.astro';
+import Scripts from '@/components/Scripts.astro';
 interface Props {
   title: string;
 }
@@ -25,33 +26,7 @@ const { title } = Astro.props;
           <slot /> 
         </div>
         <Footer />
-            <!-- Bootstrap core JS-->
-            <script is:inline src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
-            <!-- GSAP, ScrollTrigger, Locomotive Scroll -->
-            <script is:inline src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-            <script is:inline src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-            <script is:inline src="https://unpkg.com/split-type"></script>
-            <script is:inline src="https://unpkg.com/locomotive-scroll/dist/locomotive-scroll.min.js"></script>
-            <script is:inline src="/assets/js/scripts.js" defer></script>
-
-            <!-- Toast -->
-            <div id="copyToast" class="toast align-items-center text-bg-success border-0 position-fixed top-0 end-0 m-3" role="alert" aria-live="assertive" aria-atomic="true">
-              <div class="d-flex">
-                <div class="toast-body">
-                  Email copiado!!!
-                </div>
-                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
-              </div>
-            </div>
-            <!-- Toast -->
-            <div id="copyToastF" class="toast align-items-center text-bg-success border-0 position-fixed bottom-0 start-50 translate-middle-x m-3" role="alert" aria-live="assertive" aria-atomic="true">
-              <div class="d-flex">
-                <div class="toast-body">
-                  Email copiado!!!
-                </div>
-                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
-              </div>
-            </div>
+        <Scripts />
       </main>
     </body>
 </html>
