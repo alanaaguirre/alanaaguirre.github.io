@@ -3,53 +3,38 @@ interface Props {
   title: string;
   description?: string;
 }
+
 const { title, description } = Astro.props;
+const metaDescription =
+  description ??
+  "Product Designer focused on systems, structured digital processes and technical execution.";
 ---
 
 <head>
-
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <title>{title} | Alan Aguirre</title>
 
-  <meta
-    name="description"
-    content={description ?? "Product Designer focused on systems, structured digital processes and technical execution."}
-  />
-
+  <meta name="description" content={metaDescription} />
   <meta name="author" content="Alan Aguirre" />
   <meta name="robots" content="index, follow" />
 
   <!-- Open Graph -->
-  <meta property="og:title" content={title + " | Alan Aguirre"} />
-  <meta
-    property="og:description"
-    content={description ?? "Product Designer focused on systems and scalable digital solutions."}
-  />
+  <meta property="og:title" content={`${title} | Alan Aguirre`} />
+  <meta property="og:description" content={metaDescription} />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="/assets/img/fav/android-icon-192x192.png" />
+  <meta property="og:url" content={Astro.url.href} />
+  <meta property="og:site_name" content="Alan Aguirre" />
+  <meta property="og:image" content="/assets/img/og-image.jpg" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
 
   <!-- Favicon -->
-  <link rel="apple-touch-icon" sizes="57x57" href="/assets/img/fav/apple-icon-57x57.png" />
-  <link rel="apple-touch-icon" sizes="60x60" href="/assets/img/fav/apple-icon-60x60.png" />
-  <link rel="apple-touch-icon" sizes="72x72" href="/assets/img/fav/apple-icon-72x72.png" />
-  <link rel="apple-touch-icon" sizes="76x76" href="/assets/img/fav/apple-icon-76x76.png" />
-  <link rel="apple-touch-icon" sizes="114x114" href="/assets/img/fav/apple-icon-114x114.png" />
-  <link rel="apple-touch-icon" sizes="120x120" href="/assets/img/fav/apple-icon-120x120.png" />
-  <link rel="apple-touch-icon" sizes="144x144" href="/assets/img/fav/apple-icon-144x144.png" />
-  <link rel="apple-touch-icon" sizes="152x152" href="/assets/img/fav/apple-icon-152x152.png" />
-  <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/fav/apple-icon-180x180.png" />
-  <link rel="icon" type="image/png" sizes="192x192" href="/assets/img/fav/android-icon-192x192.png" />
-  <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/fav/favicon-32x32.png" />
-  <link rel="icon" type="image/png" sizes="96x96" href="/assets/img/fav/favicon-96x96.png" />
-  <link rel="icon" type="image/png" sizes="16x16" href="/assets/img/fav/favicon-16x16.png" />
-  <meta name="msapplication-TileColor" content="#07121d" />
-  <meta name="msapplication-TileImage" content="/assets/img/fav/ms-icon-144x144.png" />
-  <meta name="theme-color" content="#07121d" />
-  <link rel="icon" type="image/png" href="/assets/img/fav/android-icon-192x192.png" />
+  <link rel="icon" type="image/svg+xml" href="/assets/img/favicon/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon/favicon-32x32.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/favicon/apple-touch-icon.png" />
 
-  <!-- Theme color minimal -->
   <meta name="theme-color" content="#ffffff" />
-
 </head>
