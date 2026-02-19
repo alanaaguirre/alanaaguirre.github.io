@@ -1,0 +1,40 @@
+
+  .project-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* Móvil: una sola columna */
+    gap: 3rem;
+    padding: 2rem 5%;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  @media (min-width: 992px) {
+    .project-grid {
+      grid-template-columns: 4fr 8fr; /* Desktop: Proporción 40/60 aproximadamente */
+      align-items: start;
+    }
+
+    .project-description {
+      position: sticky; /* La descripción se queda pegada mientras haces scroll en las fotos */
+      top: 100px;
+    }
+  }
+
+  .main-image, .secondary-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    display: block;
+    object-fit: cover;
+  }
+
+  .custom-tag {
+    display: inline-block;
+    padding: 0.3rem 1rem;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 100px;
+    font-size: 0.85rem;
+    margin: 0.3rem;
+  }
