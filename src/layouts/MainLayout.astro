@@ -5,7 +5,6 @@ import Sidebar from '@/components/Sidebar.astro';
 import { ViewTransitions } from "astro:transitions";
 
 import '@/styles/global.css';
-import '@/scripts/main.ts';
 
 interface Props {
   title: string;
@@ -36,5 +35,6 @@ const { title, description } = Astro.props;
       </div>
 
     </div>
+    <script src="/assets/js/main.js" defer></script>
   </body>
 </html>

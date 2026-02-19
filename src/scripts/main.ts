@@ -1,4 +1,3 @@
-if (typeof document !== "undefined") {
 let revealObserver: IntersectionObserver | null = null;
 
 function initScrollReveal() {
@@ -21,14 +20,14 @@ function initScrollReveal() {
   });
 
   items.forEach(item => {
-    item.classList.remove("visible"); // reset por si vienes de atrás
+    item.classList.remove("visible");
     revealObserver?.observe(item);
   });
 }
 
 function initSectionReveal() {
   const observer = new IntersectionObserver((entries, obs) => {
-    entries.forEach((entry) => {
+    entries.forEach(entry => {
       if (entry.isIntersecting) {
         const items = entry.target.querySelectorAll(".reveal");
 
@@ -43,7 +42,7 @@ function initSectionReveal() {
     });
   }, { threshold: 0.2 });
 
-  document.querySelectorAll("[data-animate]").forEach((section) => {
+  document.querySelectorAll("[data-animate]").forEach(section => {
     observer.observe(section);
   });
 }
@@ -67,6 +66,10 @@ function init() {
   initEmail();
 }
 
-document.addEventListener("DOMContentLoaded", init);
-document.addEventListener("astro:page-load", init);
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", init);
+} else {
+  init();
 }
+
+document.addEventListener("astro:page-load", init);
