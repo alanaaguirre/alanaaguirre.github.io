@@ -1,3 +1,4 @@
+if (typeof document !== "undefined") {
 let revealObserver: IntersectionObserver | null = null;
 
 function initScrollReveal() {
@@ -68,3 +69,4 @@ function init() {
 
 document.addEventListener("DOMContentLoaded", init);
 document.addEventListener("astro:page-load", init);
+}
