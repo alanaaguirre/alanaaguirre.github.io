@@ -1,0 +1,408 @@
+.layout {
+  display: flex;
+}
+
+/* Sidebar */
+.sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 200px;
+  height: 100vh;
+  border-right: 1px solid #000;
+  background: #fff;
+  z-index: 100;
+}
+
+.sidebar-inner {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  padding: 48px 32px;
+}
+
+.identity {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  text-align: center;
+}
+
+.name {
+  font-size: 12px;
+  letter-spacing: 1.5px;
+}
+
+.role {
+  font-size: 12px;
+  color: #666;
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.nav-link {
+  font-size: 14px;
+  text-decoration: none;
+  color: #111;
+  transition: opacity 0.2s ease;
+}
+
+.nav-link:hover {
+  opacity: 0.6;
+}
+
+/* Content wrapper */
+.content {
+  margin-left: 240px;
+  width: 100%;
+  min-height: 100vh;
+}
+
+.inner {
+  padding: 140px 80px;
+}
+
+html[data-astro-transition] .hero {
+  animation: none;
+  opacity: 1;
+  transform: none;
+}
+
+
+
+
+.hero .meta {
+  opacity: 0;
+  transform: translateY(10px);
+  animation: heroMeta 0.6s ease forwards;
+  animation-delay: 0.2s;
+}
+
+@keyframes heroMeta {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+.hero.home {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.hero.home h1 {
+  font-family: var(--font-display);
+  font-size: clamp(90px, 14vw, 200px);
+  line-height: 0.9;
+  letter-spacing: -2px;
+  margin: 0;
+  white-space: nowrap;
+}
+
+.hero.home .subtitle {
+  font-size: 18px;
+  margin-top: 32px;
+  opacity: 0.6;
+}
+
+.hero.project h1 {
+  font-size: clamp(84px, 11vw, 160px);
+  line-height: 0.9;
+  font-weight: 700;
+  letter-spacing: -2px;
+}
+.back-link {
+  display: inline-block;
+  font-size: 13px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  opacity: 0.5;
+  text-decoration: none;
+  color: inherit;
+  margin-bottom: 60px;
+  transition: opacity 0.2s ease;
+}
+
+.back-link:hover {
+  opacity: 1;
+}
+
+
+.work-list {
+  padding-top: 220px;
+  padding-bottom: 120px;
+}
+
+.section-title {
+  font-size: 14px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 120px;
+  opacity: 0.6;
+}
+
+.work-list ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.work-item {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  padding: 80px 0;
+  opacity: 0;
+  transform: translateY(60px);
+  transition: opacity 0.7s cubic-bezier(.16,.84,.44,1),
+              transform 0.7s cubic-bezier(.16,.84,.44,1);
+}
+
+.work-item.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.work-item a {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  text-decoration: none;
+  color: #111;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.work-title {
+  font-family: var(--font-display);
+  font-size: clamp(56px, 7vw, 96px);
+  line-height: 0.95;
+  letter-spacing: -1.5px;
+  font-weight: 600;
+}
+
+.work-year {
+  font-size: 14px;
+  opacity: 0.4;
+}
+
+.work-item:hover a {
+  opacity: 0.6;
+  transform: translateX(6px);
+}
+
+
+
+
+.project {
+  max-width: 1200px;
+}
+
+.project-header {
+  padding-bottom: 240px;
+}
+
+.project-body h2 {
+  font-size: 32px;
+  margin-top: 120px;
+  margin-bottom: 32px;
+}
+
+.project-body p {
+  font-size: 18px;
+  line-height: 1.8;
+  color: #222;
+}
+
+.project-body img {
+  display: block;
+  width: 100%;
+  margin: 100px 0;
+  border: 1px solid #000;
+  border-radius: 12px;
+  transition: transform 0.3s ease;
+}
+
+.project-body img:hover {
+  transform: scale(1.01);
+}
+.project-meta {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px; /* ← separación automática */
+}
+
+.meta-item {
+  display: flex;
+  gap: 12px;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.meta-label {
+  font-weight: 600;
+  min-width: 90px; /* alinea columnas */
+}
+
+.meta-value {
+  opacity: 0.8;
+}
+
+
+.project-tags {
+  margin-top: 180px;
+  font-size: 14px;
+  color: #444;
+}
+
+
+@media (max-width: 1024px) {
+  .sidebar {
+    width: 100%;
+    height: 70px;
+    border-right: none;
+    border-bottom: 1px solid #000;
+  }
+
+  .sidebar-inner {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 24px;
+  }
+
+  .nav {
+    flex-direction: row;
+    gap: 20px;
+  }
+
+  .content {
+    margin-left: 0;
+    padding-top: 70px;
+  }
+
+  .inner {
+    padding: 100px 24px;
+  }
+
+  .hero.home h1 {
+    white-space: normal;
+    font-size: clamp(48px, 12vw, 72px);
+  }
+
+  .work-item {
+    padding: 50px 0;
+  }
+
+  .work-item a {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .work-title {
+    font-size: clamp(36px, 10vw, 48px);
+  }
+}
+
+
+::view-transition-new(home-hero) {
+  animation: heroSettle 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes heroSettle {
+  from {
+    transform: translateY(20px);
+    opacity: 0.85;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+::view-transition-old(home-hero),
+::view-transition-new(home-hero) {
+  animation: none;
+}
+
+::view-transition-new(home-hero) {
+  animation: heroSettle 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes heroSettle {
+  from {
+    transform: translateY(20px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+body.home ::view-transition-new(home-hero) {
+  animation: heroSettle 0.4s ease;
+}
+
+.contact {
+  padding-top: 240px;
+  padding-bottom: 200px;
+}
+
+
+.contact-title {
+  font-size: clamp(48px, 6vw, 80px);
+  line-height: 1;
+  margin-bottom: 40px;
+}
+
+.contact-text {
+  font-size: 18px;
+  color: #555;
+  margin-bottom: 80px;
+}
+
+.contact-actions {
+  display: flex;
+  gap: 40px;
+}
+
+.contact-link {
+  font-size: 16px;
+  text-decoration: none;
+  border-bottom: 1px solid #000;
+  padding-bottom: 4px;
+  transition: opacity 0.2s ease;
+}
+
+.contact-link:hover {
+  opacity: 0.5;
+}
+
+@media (max-width: 768px) {
+  .hero.project {
+    min-height: auto;
+    padding: 120px 24px 60px;
+  }
+}
+@media (max-width: 768px) {
+  .project-header-inner {
+    display: block;
+  }
+
+  .project-year {
+    margin-top: 16px;
+  }
+}
+@media (max-width: 768px) {
+  .hero.project h1 {
+    font-size: clamp(42px, 12vw, 64px);
+    line-height: 1;
+    white-space: normal; /* importante */
+    word-break: break-word;
+  }
+}

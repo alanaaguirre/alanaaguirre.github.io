@@ -1,0 +1,55 @@
+---
+interface Props {
+  title: string;
+  subTitle?: string;
+  role?: string;
+  duration?: string;
+  stack?: string[];
+  variant?: "home" | "project";
+  transitionName?: string;
+}
+
+const {
+  title,
+  subTitle,
+  role,
+  duration,
+  stack,
+  variant = "project",
+  transitionName
+} = Astro.props;
+---
+
+<header class={`hero ${variant}`}>
+  <div class="hero-inner">
+    <h1 transition:name={transitionName}>
+      {title}
+    </h1>
+
+    {subTitle && <p class="subtitle">{subTitle}</p>}
+
+    {variant === "project" && (
+    <div class="meta">
+        {role && (
+        <div class="meta-item">
+            <span class="meta-label">Role</span>
+            <span class="meta-value">{role}</span>
+        </div>
+        )}
+        {duration && (
+        <div class="meta-item">
+            <span class="meta-label">Duration</span>
+            <span class="meta-value">{duration}</span>
+        </div>
+        )}
+        {stack && (
+        <div class="meta-item">
+            <span class="meta-label">Stack</span>
+            <span class="meta-value">{stack.join(", ")}</span>
+        </div>
+        )}
+    </div>
+    )}
+
+    </div>
+</header>

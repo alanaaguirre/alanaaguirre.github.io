@@ -1,1 +1,32 @@
-const homeText=new SplitType("#homeText");gsap.to(".char",{y:0,stagger:.05,delay:0,duration:.2,ease:"power2.inOut"});const options={root:null,rootMargin:"200px",threshold:.9},locoScroll=new LocomotiveScroll({el:document.querySelector("[data-scroll-container]"),smooth:!0,tablet:{smooth:!0},smartphone:{smooth:!0}});gsap.registerPlugin(ScrollTrigger),ScrollTrigger.scrollerProxy("[data-scroll-container]",{scrollTop(e){return arguments.length?locoScroll.scrollTo(e,0,0):locoScroll.scroll.instance.scroll.y},getBoundingClientRect:()=>({top:0,left:0,width:window.innerWidth,height:window.innerHeight}),pinType:document.querySelector("[data-scroll-container]").style.transform?"transform":"fixed"}),locoScroll.on("scroll",ScrollTrigger.update),ScrollTrigger.addEventListener("refresh",()=>locoScroll.update()),ScrollTrigger.refresh(),gsap.registerPlugin(ScrollTrigger),gsap.to(".text p",{backgroundPositionX:"0%",stagger:1,scrollTrigger:{scroller:"[data-scroll-container]",trigger:".text p",scrub:1,start:"top center",end:"bottom top"}}),gsap.to(".title1",{x:-4e3,xPercent:150,ease:"none",scrollTrigger:{scroller:"[data-scroll-container]",trigger:".title1",scrub:!0}}),gsap.to(".title2",{x:100,xPercent:150,ease:"none",scrollTrigger:{scroller:"[data-scroll-container]",trigger:".title2",scrub:!0}});const cursor=document.querySelector(".cursor"),cursorInner=document.querySelector(".cursor-inner"),interactiveElements=document.querySelectorAll("a, button");interactiveElements.forEach(e=>{e.addEventListener("mouseenter",()=>{cursor.classList.add("glitch-active")}),e.addEventListener("mouseleave",()=>{cursor.classList.remove("glitch-active")})}),gsap.set(".cursor",{xPercent:-50,yPercent:-50});const pos={x:window.innerWidth/2,y:window.innerHeight/2},mouse={x:pos.x,y:pos.y},speed=.2,xSet=gsap.quickSetter(cursor,"x","px"),ySet=gsap.quickSetter(cursor,"y","px");function glitchEffectFigma(){applyGlitchEffect(".figma-icon",["fa-brands","fa-figma"],["fa-sharp","fa-solid","fa-code"])}function glitchEffectDesign(){applyGlitchEffect(".design-icon",["fa-sharp","fa-solid","fa-bezier-curve"],["fa-sharp","fa-solid","fa-icons"])}function glitchEffectDev(){applyGlitchEffect(".dev-icon",["fa-sharp","fa-solid","fa-terminal"],["fa-sharp","fa-solid","fa-laptop-code"])}function applyGlitchEffect(e,t,o){if(!document.querySelector(e)){console.error(`Elemento con selector "${e}" no encontrado.`);return}let r=gsap.timeline({repeat:-1,repeatDelay:1.5});r.to(`${e} ~ .glitch-top`,{x:-5,opacity:1,duration:.05,yoyo:!0,repeat:2},"glitch").to(`${e} ~ .glitch-middle`,{x:5,opacity:1,duration:.05,yoyo:!0,repeat:2},"glitch").to(`${e} ~ .glitch-bottom`,{x:-3,opacity:1,duration:.05,yoyo:!0,repeat:2},"glitch").to(`${e} ~ .glitch-top, ${e} ~ .glitch-middle, ${e} ~ .glitch-bottom`,{opacity:0,duration:.1}),r.to(e,{filter:"drop-shadow(4px 0px red) drop-shadow(-4px 0px blue)",duration:.1},"-=0.1").to(e,{filter:"none",duration:.1}),r.to(e,{opacity:0,duration:.1}).call(()=>{let r=document.querySelector(e);r?r.classList.contains(t[t.length-1])?(t.forEach(e=>r.classList.remove(e)),o.forEach(e=>r.classList.add(e))):(o.forEach(e=>r.classList.remove(e)),t.forEach(e=>r.classList.add(e))):console.error(`No se encontr\xf3 el icono con selector "${e}" al cambiar de icono.`)}).to(e,{opacity:1,duration:.1})}function setCopyrightDate(){(year=new Date().getYear())<1900&&(year+=1900),document.getElementById("currentYear").innerHTML=year}window.addEventListener("mousemove",e=>{mouse.x=e.x,mouse.y=e.y}),gsap.ticker.add(()=>{let e=1-Math.pow(.8,gsap.ticker.deltaRatio());pos.x+=(mouse.x-pos.x)*e,pos.y+=(mouse.y-pos.y)*e,xSet(pos.x),ySet(pos.y)}),window.innerWidth<=768?gsap.utils.toArray(".service__content h3").forEach(e=>{gsap.from(e,{opacity:1,y:20,duration:.8,ease:"power2.out",scrollTrigger:{trigger:e,scroller:"[data-scroll-container]",start:"top 90%",end:"top 70%",scrub:!1,toggleActions:"play none none reverse"}})}):gsap.utils.toArray(".service").forEach(e=>{let t=gsap.timeline({scrollTrigger:{trigger:e,start:"top 80%",end:"bottom 20%",scrub:!0}});t.fromTo(e.querySelector(".service__content"),{opacity:1,x:-100},{opacity:1,x:0,duration:1}),t.fromTo(e.querySelector(".service__image img"),{scale:1.4},{scale:1,duration:1},"<")}),document.addEventListener("DOMContentLoaded",()=>{glitchEffectFigma(),glitchEffectDesign(),glitchEffectDev()}),document.querySelectorAll(".copy-link").forEach(e=>{e.addEventListener("click",t=>{t.preventDefault();let o=e.getAttribute("data-link");navigator.clipboard.writeText(o).then(()=>{console.log("Enlace copiado:",o);let e=document.getElementById("copyToast"),t=new bootstrap.Toast(e);t.show()}).catch(e=>{console.error("Error al copiar:",e)})})}),document.querySelectorAll(".copy-linkF").forEach(e=>{e.addEventListener("click",t=>{t.preventDefault();let o=e.getAttribute("data-link");navigator.clipboard.writeText(o).then(()=>{console.log("Enlace copiado:",o);let e=document.getElementById("copyToastF"),t=new bootstrap.Toast(e);t.show()}).catch(e=>{console.error("Error al copiar:",e)})})}),setCopyrightDate();
+  function initReveal() {
+
+    const sections = document.querySelectorAll("[data-animate]");
+
+    sections.forEach((section) => {
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+
+            const items = entry.target.querySelectorAll(".reveal");
+
+            items.forEach((item, index) => {
+              setTimeout(() => {
+                item.classList.add("visible");
+              }, index * 100);
+            });
+
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.2 });
+
+      observer.observe(section);
+    });
+  }
+
+  // Primera carga normal
+  document.addEventListener("DOMContentLoaded", initReveal);
+
+  // Navegación con Astro
+  document.addEventListener("astro:page-load", initReveal);

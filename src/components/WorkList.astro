@@ -7,15 +7,17 @@ const projects = (await getCollection('work')).sort(
 );
 ---
 
-
-<section class="work-list inner" data-animate>
+<section class="work-list data-animate">
   <h2 class="section-title">Selected Work</h2>
 
   <ul>
     {projects.map((project) => (
       <li class="work-item reveal">
         <a href={`/projects/${project.slug}`}>
-          <span class="work-title">{project.data.title}</span>
+          <span class="work-title">
+            {project.data.title}
+          </span>
+
           <span class="work-year">
             {new Date(project.data.pubDate).getFullYear()}
           </span>

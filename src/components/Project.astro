@@ -1,29 +1,25 @@
 ---
 import { type CollectionEntry } from 'astro:content';
-type Props = CollectionEntry <"work">["data"] & {slug: string };
-const {title, subTitle, typeProject, tags, slug} = Astro.props;
 
+type Props = CollectionEntry<"work">["data"] & {
+  slug: string;
+  index: number;
+};
+
+const { title, subTitle, slug, index } = Astro.props;
 ---
 
-<li class="menu__item mb-4">
-    <a href={`/projects/${slug}`}>
-        <span class="menu__item-text"><span class="menu__item-textinner">{title} {subTitle}</span></span>
-    
-        <span class="menu__item-sub">
-            <ul class="nav flex-column">
-                <li class="nav-item my-1">
-                    <h3>
-                       {typeProject}
-                    </h3>
-                </li>
-                <li class="nav-item my-1">
-                    <div class="grid gap-3">
-                        {tags && Array.isArray(tags) && tags.map((tag: string) => (
-                            <span class="badge text-bg-light me-2">{tag}</span>
-                          ))}
-                      </div>
-                </li>
-            </ul>
-        </span>
-    </a>
+<li class="work-item">
+  <a href={`/projects/${slug}`} class="work-link">
+
+    <span class="work-number">
+      {(index + 1).toString().padStart(2, '0')}
+    </span>
+
+    <div class="work-text">
+      <h3 class="work-title">{title}</h3>
+      <p class="work-subtitle">{subTitle}</p>
+    </div>
+
+  </a>
 </li>

@@ -5,7 +5,7 @@ role: "Product Designer & Front-end Developer"
 duration: "6 weeks"
 stack: ["HTML", "CSS", "JavaScript"]
 tags: ["Information Architecture", "Catalog Design", "B2B Platform"]
-pubDate: 2021-09-02
+pubDate: 2019-09-02
 ---
 
 ## 01 — Context

@@ -1,35 +1,38 @@
 ---
 import { type CollectionEntry } from "astro:content";
 import MainLayout from "@/layouts/MainLayout.astro";
-import MainHero from "@/components/MainHero.astro";
-const {heroImage, title, subTitle, tags, imgOne, imgTwo} = Astro.props;
-type Props = CollectionEntry <"work">["data"];
+import Hero from "@/components/Hero.astro";
 
+type Props = CollectionEntry<"work">["data"] & { slug: string };
+
+const { title, subTitle, role, duration, stack, tags } =
+  Astro.props as Props;
 ---
 
 <MainLayout title={title}>
+    <a href="/" class="back-link">Selected Work</a>
+    <Hero
+        title={title}
+        subTitle={subTitle}
+        role={role}
+        duration={duration}
+        stack={stack}
+        variant="project"
+    />
 
-    <MainHero title={title} subTitle={subTitle} />
+    <article class="project-body">
+        <slot />
+    </article>
 
-    <section class="projects" data-scroll-section>
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-xl-4 col-lg-12 col-md-12 descriptionProject mb-4" data-scroll>
-                    <p class="prose">
-                        <slot />
-                    </p>
-                    <div class="grid gap-3" data-scroll>
-                        {tags ? tags.map((tag: string) => (
-                            <span class="badge text-bg-light me-2">{tag}</span>
-                          )) : <p>No tags available</p>}
-                      </div>
-                </div>
-                  <div class="col-xl-8 col-lg-12 col-md-12 col-sm-12 imagesProject">
-                    {heroImage && heroImage !== "" && <img class="img-fluid w-100 rounded my-4 image" src={heroImage} alt={title} />}
-                    {imgOne && imgOne !== "" && <img class="img-fluid w-100 rounded my-4 image" src={imgOne} alt={title} />}
-                    {imgTwo && imgTwo !== "" && <img class="img-fluid w-100 rounded my-4 image" src={imgTwo} alt={title} />}
-                  </div>
-            </div>
+    {tags && (
+        <div class="project-tags">
+        <span class="label">Tags —</span>
+                {tags?.map((tag: string, i: number) => (
+            <span>
+                {tag}{i < tags.length - 1 ? " · " : ""}
+            </span>
+            ))}
         </div>
-    </section>
+    )}
+
 </MainLayout>

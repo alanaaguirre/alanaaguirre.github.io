@@ -6,7 +6,7 @@ duration: "3 months"
 cover: "/assets/img/projects/acsa/admin_dashboard.png"
 stack: ["Laravel", "Blade", "MySQL"]
 tags: ["Information Architecture", "CMS", "Operational Efficiency"]
-pubDate: 2025-02-03
+pubDate: 2023-05-18
 ---
 
 ## 01 — Context
