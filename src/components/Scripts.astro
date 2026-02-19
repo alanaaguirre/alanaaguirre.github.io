@@ -31,7 +31,7 @@
     const domain = "proton.me";  // cambia esto
     const email = `${user}@${domain}`;
 
-    const link = document.getElementById("email-link");
+    const link = document.querySelector<HTMLAnchorElement>('.email-link');
     if (link) {
       link.href = `mailto:${email}`;
       link.textContent = email;

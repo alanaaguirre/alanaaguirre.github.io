@@ -69,7 +69,7 @@ The system was developed using Laravel with custom logic for:
 
 The PDF generation layer transformed structured data into a professional proposal document without manual formatting.
 
-![Generated proposal example](/assets/img/projects/vamx-pdf.png)
+
 
 ---
 
