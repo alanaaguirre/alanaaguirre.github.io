@@ -35,27 +35,7 @@ const { title, description } = Astro.props;
       </div>
 
     </div>
-    <script is:inline>
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const items = entry.target.querySelectorAll(".reveal");
 
-            items.forEach((item, index) => {
-              setTimeout(() => {
-                item.classList.add("visible");
-              }, index * 100); // stagger 100ms
-            });
-
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.2 });
-
-      document.querySelectorAll("[data-animate]").forEach((section) => {
-        observer.observe(section);
-      });
-    </script>
-
+    <script type="module" src="/src/scripts/main.ts"></script>
   </body>
 </html>
